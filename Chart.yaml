@@ -1,0 +1,14 @@
+apiVersion: v2
+name: find-fuel-api
+description: Helm chart for deploying FindFuel API
+type: application
+version: 0.1.0
+appVersion: 0.1.0
+
+maintainers:
+  - name: Ishina Nale 
+    email: inale02@gmail.com
+
+keywords:
+  - api
+  - FindFuel

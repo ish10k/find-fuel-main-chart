@@ -1,0 +1,43 @@
+global:
+  namespace: find-fuel
+  enviroment: dev
+
+app:
+  name: find-fuel-app
+  replicaCount: 3
+  image:
+    repository:
+    tag:
+  service:
+    name: find-fuel-service
+    port: 80
+    targetPort: 9090
+    nodePort: 30090
+    containerPort: 9090
+  env:
+    HOST: ""
+    PORT: "9090"
+    DB_HOST: postgres
+    DB_PORT: "5432"
+    DB_USER: postgres
+    DB_PASSWORD: postgres
+    DB_NAME: postgres
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+  livenessProbe:
+    httpGet:
+      path: /health
+      port: 9090
+    initialDelaySeconds: 5
+    periodSeconds: 10
+  readinessProbe:
+    httpGet:
+      path: /health
+      port: 9090
+    initialDelaySeconds: 5
+    periodSeconds: 5
