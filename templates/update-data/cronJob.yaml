@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: "{{ .Values.updateData.name }}-cronjob"
+spec:
+  schedule: "{{ .Values.updateData.cronJob.schedule }}"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: {{ .Values.updateData.name }}
+            image: {{ .Values.updateData.cronJob.image }}
+            imagePullPolicy: IfNotPresent
+          env:
+            {{- range $key, $value := .Values.app.env }}
+            - name: {{ $key }}
+              value: "{{ $value }}"
+            {{- end }}
+          restartPolicy: OnFailure

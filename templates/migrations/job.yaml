@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: "{{ .Values.migrations.name }}-job"
+spec:
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.migrations.name }}
+    spec:
+      containers:
+      - name: {{ .Values.migrations.name }}
+        image: {{ .Values.migrations.job.image }}
+        imagePullPolicy: IfNotPresent
+        command:
+          - "/bin/sh"
+          - "migrate_all.sh"
+        env:
+          {{- range $key, $value := .Values.app.env }}
+          - name: {{ $key }}
+            value: "{{ $value }}"
+          {{- end }}
+      restartPolicy: Never
+  backoffLimit: {{ .Values.migrations.job.backOffLimit | default 3}}

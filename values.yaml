@@ -1,27 +1,25 @@
 global:
   namespace: find-fuel
-  enviroment: dev
+  environment: dev
 
 app:
   name: find-fuel-app
-  replicaCount: 3
-  image:
-    repository:
-    tag:
+  deployment:
+    replicaCount: 1
+    image: find-fuel-app
   service:
-    name: find-fuel-service
     port: 80
-    targetPort: 9090
+    targetPort: 
     nodePort: 30090
-    containerPort: 9090
   env:
     HOST: ""
-    PORT: "9090"
-    DB_HOST: postgres
-    DB_PORT: "5432"
+    PORT: 9090
+    DB_HOST: host.docker.internal
+    DB_PORT: 5432
     DB_USER: postgres
     DB_PASSWORD: postgres
-    DB_NAME: postgres
+    DB_NAME: findfueldb
+    DB_SSLMODE: disable
   resources:
     requests:
       memory: "256Mi"
@@ -32,12 +30,26 @@ app:
   livenessProbe:
     httpGet:
       path: /health
-      port: 9090
+      port: 
     initialDelaySeconds: 5
     periodSeconds: 10
   readinessProbe:
     httpGet:
       path: /health
-      port: 9090
+      port: 
     initialDelaySeconds: 5
     periodSeconds: 5
+
+migrations:
+  name: find-fuel-migrations
+  job:
+    image: find-fuel-migrations
+    backoffLimit: 3
+
+updateData:
+  name: find-fuel-update-data
+  cronJob: 
+    schedule: "* * * * *"
+    image: find-fuel-update-data
+
+  
