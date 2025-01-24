@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: "{{ .Values.migrations.name }}-job"
+  namespace: {{ .Values.global.namespace }}
 spec:
   template:
     metadata:
