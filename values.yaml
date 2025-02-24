@@ -9,16 +9,16 @@ app:
     image: find-fuel-app
   service:
     port: 80
-    targetPort: 
     nodePort: 30090
   env:
     HOST: ""
     PORT: 9090
+    DB_DRIVER: postgres
     DB_HOST: host.docker.internal
     DB_PORT: 5432
     DB_USER: postgres
     DB_PASSWORD: postgres
-    DB_NAME: findfueldb
+    DB_NAME: postgres
     DB_SSLMODE: disable
   resources:
     requests:
@@ -51,5 +51,3 @@ updateData:
   cronJob: 
     schedule: "* * * * *"
     image: find-fuel-update-data
-
-  
