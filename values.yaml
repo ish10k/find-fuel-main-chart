@@ -49,5 +49,5 @@ migrations:
 updateData:
   name: find-fuel-update-data
   cronJob: 
-    schedule: "* * * * *"
+    schedule: "0 0,12 * * *"
     image: find-fuel-update-data
