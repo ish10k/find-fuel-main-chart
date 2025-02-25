@@ -4,11 +4,12 @@ metadata:
   name: find-fuel-argocd-app
   namespace: argocd
 spec:
+  project: default
   destination:
     namespace: find-fuel
     server: https://kubernetes.default.svc
   source:
-    repoUrl: https://github.com/ish10k/find-fuel-helm
+    repoURL: https://github.com/ish10k/find-fuel-helm
     targetRevision: main
     path: .
   syncPolicy:
