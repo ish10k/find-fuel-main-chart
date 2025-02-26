@@ -8,6 +8,9 @@ spec:
   jobTemplate:
     spec:
       template:
+        metadata:
+          labels:
+            app: "{{ .Values.updateData.name }}-cronjob"
         spec:
           restartPolicy: OnFailure
           containers:
