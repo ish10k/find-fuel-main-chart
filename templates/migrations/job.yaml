@@ -9,6 +9,7 @@ spec:
       labels:
         app: {{ .Values.migrations.name }}
     spec:
+      restartPolicy: Never
       containers:
       - name: {{ .Values.migrations.name }}
         image: {{ .Values.migrations.job.image }}
@@ -16,10 +17,7 @@ spec:
         command:
           - "/bin/sh"
           - "migrate_all.sh"
-        env:
-          {{- range $key, $value := .Values.app.env }}
-          - name: {{ $key }}
-            value: "{{ $value }}"
-          {{- end }}
-      restartPolicy: Never
+        envFrom:
+        - configMapRef:
+            name: {{ .Values.dbConfigMap.name }}
   backoffLimit: {{ .Values.migrations.job.backOffLimit | default 3}}

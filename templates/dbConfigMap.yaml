@@ -1,0 +1,10 @@
+apiVersion: 1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.dbConfigMap.name }}
+  namespace: {{ .Values.global.namespace }}
+data:
+  {{- range $key, $value := .Values.dbConfigMap.data }}
+  - name: {{ $key }}
+    value: "{{ $value }}"
+  {{- end }}

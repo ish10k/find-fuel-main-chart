@@ -19,11 +19,9 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.app.service.containerPort | default .Values.app.env.PORT }}
-          env:
-            {{- range $key, $value := .Values.app.env }}
-            - name: {{ $key }}
-              value: "{{ $value }}"
-            {{- end }}
+          envFrom:
+          - configMapRef:
+              name: {{ .Values.dbConfigMap.name }}  
           resources:
             requests:
               memory: {{ .Values.app.resources.requests.memory }}
