@@ -13,9 +13,9 @@ spec:
           - name: {{ .Values.updateData.name }}
             image: {{ .Values.updateData.cronJob.image }}
             imagePullPolicy: IfNotPresent
-          env:
-            {{- range $key, $value := .Values.app.env }}
-            - name: {{ $key }}
-              value: "{{ $value }}"
-            {{- end }}
-          restartPolicy: OnFailure
+            env:
+              {{- range $key, $value := .Values.app.env }}
+              - name: {{ $key }}
+                value: "{{ $value }}"
+              {{- end }}
+            restartPolicy: OnFailure
