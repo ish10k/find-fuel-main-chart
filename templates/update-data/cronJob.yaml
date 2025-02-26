@@ -9,6 +9,7 @@ spec:
     spec:
       template:
         spec:
+          restartPolicy: OnFailure
           containers:
           - name: {{ .Values.updateData.name }}
             image: {{ .Values.updateData.cronJob.image }}
@@ -18,4 +19,4 @@ spec:
               - name: {{ $key }}
                 value: "{{ $value }}"
               {{- end }}
-            restartPolicy: OnFailure
+          
