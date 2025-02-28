@@ -11,7 +11,7 @@ dbConfigMap:
     DB_USER: postgres
     DB_PASSWORD: postgres
     DB_NAME: postgres
-    DB_SSLMODE: disable
+    DB_SSLMODE: require
 
 app:
   name: find-fuel-app
