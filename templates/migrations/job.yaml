@@ -3,11 +3,13 @@ kind: Job
 metadata:
   name: "{{ .Values.migrations.name }}-job"
   namespace: {{ .Values.global.namespace }}
+labels:
+
 spec:
   template:
     metadata:
       labels:
-        app: {{ .Values.migrations.name }}
+        job-name: "{{ .Values.migrations.name }}-job"
     spec:
       restartPolicy: Never
       containers:
