@@ -6,7 +6,7 @@ dbConfigMap:
   name: db-config-map
   data:
     DB_DRIVER: postgres
-    DB_HOST: host.docker.internal
+    DB_HOST: postgres-cluster-rw.cnpg-db.svc.cluster.local
     DB_PORT: 5432
     DB_USER: postgres
     DB_PASSWORD: postgres
