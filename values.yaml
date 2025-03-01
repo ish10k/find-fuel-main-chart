@@ -8,9 +8,9 @@ dbConfigMap:
     DB_DRIVER: postgres
     DB_HOST: postgres-cluster-rw.cnpg-db.svc.cluster.local
     DB_PORT: 5432
-    DB_USER: postgres
-    DB_PASSWORD: postgres
-    DB_NAME: postgres
+    DB_USER: test
+    DB_PASSWORD: test
+    DB_NAME: test
     DB_SSLMODE: require
 
 app:
