@@ -18,6 +18,9 @@ appEnvConfigMap:
   data:
     HOST: ""
     PORT: 9090
+    STATICFILES_DIR: /var/www/static
+    HEALTHCHECK_ROUTE: /health
+    LOG_HEALTHCHECK_REQUESTS: false
 
 app:
   name: find-fuel-app
