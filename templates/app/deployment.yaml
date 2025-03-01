@@ -18,7 +18,7 @@ spec:
           image: "{{ .Values.app.deployment.image }}"
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: {{ .Values.app.service.containerPort | default .Values.app.env.PORT }}
+            - containerPort: {{ .Values.app.service.containerPort | default .Values.appEnvConfigMap.data.PORT }}
           envFrom:
           - configMapRef:
               name: {{ .Values.dbEnvConfigMap.name }}
