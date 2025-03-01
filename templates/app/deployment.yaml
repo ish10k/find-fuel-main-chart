@@ -34,12 +34,12 @@ spec:
           livenessProbe:
             httpGet:
               path: {{ .Values.app.livenessProbe.httpGet.path }}
-              port: {{ .Values.app.livenessProbe.httpGet.port | default .Values.app.env.PORT }}
+              port: {{ .Values.app.livenessProbe.httpGet.port | default .Values.appEnvConfigMap.data.PORT }}
             initialDelaySeconds: {{ .Values.app.livenessProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.app.livenessProbe.periodSeconds }}
           readinessProbe:
             httpGet:
               path: {{ .Values.app.readinessProbe.httpGet.path }}
-              port: {{ .Values.app.readinessProbe.httpGet.port | default .Values.app.env.PORT }}
+              port: {{ .Values.app.readinessProbe.httpGet.port | default .Values.appEnvConfigMap.data.PORT }}
             initialDelaySeconds: {{ .Values.app.readinessProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.app.readinessProbe.periodSeconds }}
