@@ -2,8 +2,8 @@ global:
   namespace: find-fuel
   environment: dev
 
-dbConfigMap:
-  name: db-config-map
+dbEnvConfigMap:
+  name: db-env-config-map
   data:
     DB_DRIVER: postgres
     DB_HOST: postgres-cluster-rw.cnpg-db.svc.cluster.local
@@ -13,6 +13,12 @@ dbConfigMap:
     DB_NAME: test
     DB_SSLMODE: require
 
+appEnvConfigMap:
+  name: app-env-config-map
+  data:
+    HOST: ""
+    PORT: 9090
+
 app:
   name: find-fuel-app
   deployment:
@@ -21,9 +27,6 @@ app:
   service:
     port: 80
     nodePort: 30090
-  env:
-    HOST: ""
-    PORT: 9090
   resources:
     requests:
       memory: "256Mi"

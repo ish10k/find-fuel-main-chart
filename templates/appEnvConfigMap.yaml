@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Values.dbEnvConfigMap.name }}
+  name: {{ .Values.appEnvConfigMap.name }}
   namespace: {{ .Values.global.namespace }}
 data:
-  {{- range $key, $value := .Values.dbEnvConfigMap.data }}
+  {{- range $key, $value := .Values.appEnvConfigMap.data }}
   {{ $key }}: "{{ $value }}"
   {{- end }}

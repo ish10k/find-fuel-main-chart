@@ -19,5 +19,5 @@ spec:
             imagePullPolicy: IfNotPresent
             envFrom:
             - configMapRef:
-                name: {{ .Values.dbConfigMap.name }}
+                name: {{ .Values.dbEnvConfigMap.name }}
           
