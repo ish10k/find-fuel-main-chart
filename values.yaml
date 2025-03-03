@@ -6,7 +6,7 @@ dbEnvConfigMap:
   name: db-env-config-map
   data:
     DB_DRIVER: postgres
-    DB_HOST: postgres-cluster-rw.cnpg-db.svc.cluster.local
+    DB_HOST: postgres-cluster-rw.find-fuel-cnpg-db.svc.cluster.local
     DB_PORT: 5432
     DB_USER: postgres
     DB_PASSWORD: postgres
@@ -21,6 +21,7 @@ appEnvConfigMap:
     STATICFILES_DIR: /var/www/static
     HEALTHCHECK_ROUTE: /health
     LOG_HEALTHCHECK_REQUESTS: false
+    AUTH_ENABLED: false
 
 app:
   name: find-fuel-app
