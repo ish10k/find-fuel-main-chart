@@ -50,6 +50,9 @@ app:
       port: 
     initialDelaySeconds: 5
     periodSeconds: 5
+  ingress:
+    name: find-fuel-app-ingress
+    host: api.findfuel.uk
 
 migrations:
   name: find-fuel-migrations
