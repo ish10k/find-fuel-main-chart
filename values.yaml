@@ -27,7 +27,7 @@ app:
   name: find-fuel-app
   deployment:
     replicaCount: 1
-    image: find-fuel-app
+    image: docker.io/ish10k/find-fuel-app
   service:
     port: 80
     nodePort: 30090
@@ -54,11 +54,11 @@ app:
 migrations:
   name: find-fuel-migrations
   job:
-    image: find-fuel-migrations
+    image: docker.io/ish10k/find-fuel-migrations
     backoffLimit: 3
 
 updateData:
   name: find-fuel-update-data
   cronJob: 
     schedule: "0 0,12 * * *"
-    image: find-fuel-update-data
+    image: docker.io/ish10k/find-fuel-update-data
