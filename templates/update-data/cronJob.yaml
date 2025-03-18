@@ -5,6 +5,8 @@ metadata:
   namespace: {{ .Values.global.namespace }}
 spec:
   schedule: "{{ .Values.updateData.cronJob.schedule }}"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:
